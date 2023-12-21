@@ -8,6 +8,8 @@ namespace AddressBook
     {
         static void Main()
         {
+       
+
             // Create an instance of the AddressBook class
             Contact.AddressBook addressBook = new Contact.AddressBook();
 
@@ -38,9 +40,12 @@ namespace AddressBook
                         Console.Write("Enter the address: ");
                         string address = Console.ReadLine();
 
-                        // Create a new contact and add it to the address book
+                        // Create a new contact
                         Contact newContact = new Contact(firstName, lastName, telephoneNumber, email, address);
+
+                        // Add the contact to the address book
                         addressBook.AddContact(newContact);
+
                         Console.WriteLine("Contact added successfully!\n");
                         break;
 
@@ -51,6 +56,9 @@ namespace AddressBook
                         break;
 
                     case "3":
+                        // Save contacts to the JSON file before exiting
+                        addressBook.SaveContactsToJson();
+
                         // Exit the program
                         Console.WriteLine("Exiting the address book. Goodbye!");
                         return;
@@ -67,7 +75,6 @@ namespace AddressBook
             string input;
             do
             {
-               
                 input = Console.ReadLine();
             } while (string.IsNullOrEmpty(input.Trim()));
 
