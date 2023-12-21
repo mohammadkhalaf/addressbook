@@ -8,10 +8,11 @@ namespace AddressBook
     {
         static void Main()
         {
-       
-
-            // Create an instance of the AddressBook class
+          
             Contact.AddressBook addressBook = new Contact.AddressBook();
+
+            Console.WriteLine("Contacts in the address book:");
+            addressBook.ViewContacts();
 
             // Menu loop
             while (true)
@@ -40,11 +41,14 @@ namespace AddressBook
                         Console.Write("Enter the address: ");
                         string address = Console.ReadLine();
 
-                        // Create a new contact
+                        
                         Contact newContact = new Contact(firstName, lastName, telephoneNumber, email, address);
 
-                        // Add the contact to the address book
+                        
                         addressBook.AddContact(newContact);
+
+                       
+                        addressBook.SaveContactsToJson();
 
                         Console.WriteLine("Contact added successfully!\n");
                         break;
