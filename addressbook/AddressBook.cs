@@ -37,13 +37,20 @@ namespace AddressBook
                 }
                 else
                 {
-                    foreach (Contact contact in contacts)
+                    
+                    Console.WriteLine("No.   | First Name   | Last Name    | Telephone     | Email                 | Address");
+                    Console.WriteLine("------+--------------+--------------+----------------+-----------------------+-----------------------");
+
+                    
+                    for (int i = 0; i < contacts.Count; i++)
                     {
-                        Console.WriteLine(contact);
+                        Contact contact = contacts[i];
+                        Console.WriteLine($"{i + 1,-5}| {contact.FirstName,-13}| {contact.LastName,-13}| {contact.TelephoneNumber,-15}| {contact.Email,-23}| {contact.Address}");
                     }
                     Console.WriteLine();
                 }
             }
+
 
             public void SaveContactsToJson()
             {
