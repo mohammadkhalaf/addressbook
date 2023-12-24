@@ -16,7 +16,7 @@ namespace AddressBook
             public AddressBook()
             {
               
-                jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "contacts.json");
+                jsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../contacts.json");
 
                 LoadContactsFromJson();
             }
