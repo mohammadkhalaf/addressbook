@@ -20,10 +20,11 @@ namespace AddressBook
                 Console.WriteLine("Address Book Menu:");
                 Console.WriteLine("1. Add Contact");
                 Console.WriteLine("2. View Contacts");
-                Console.WriteLine("3. Exit");
+                Console.WriteLine("3. Display a contact information");
+                Console.WriteLine("4. Exit");
 
                 // Get user choice
-                Console.Write("Enter your choice (1-3): ");
+                Console.Write("Enter your choice (1-4): ");
                 string choice = Console.ReadLine();
 
                 switch (choice)
@@ -60,6 +61,25 @@ namespace AddressBook
                         break;
 
                     case "3":
+                        // Display detailed  contact information
+                        Console.Write("Enter the email of the contact: ");
+                        string contactEmail = Console.ReadLine();
+                        Contact foundContact = addressBook.FindContactByEmail(contactEmail);
+
+                        if (foundContact != null)
+                        {
+                            Console.WriteLine("Contact Information:");
+                            Console.WriteLine("No.   | First Name   | Last Name    | Telephone     | Email                 | Address");
+                            Console.WriteLine("------+--------------+--------------+----------------+-----------------------+-----------------------");
+                            Console.WriteLine($"{1,-5}| {foundContact.FirstName,-13}| {foundContact.LastName,-13}| {foundContact.TelephoneNumber,-15}| {foundContact.Email,-23}| {foundContact.Address}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Contact with email '{contactEmail}' not found.\n");
+                        }
+                        break;
+
+                    case "4":
                         // Save contacts to the JSON file before exiting
                         addressBook.SaveContactsToJson();
 

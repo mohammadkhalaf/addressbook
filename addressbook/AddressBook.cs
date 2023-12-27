@@ -74,6 +74,11 @@ namespace AddressBook
                     contacts = new List<Contact>();
                 }
             }
+            public Contact FindContactByEmail(string email)
+            {
+                return contacts.Find(c => c.Email == email);
+            }
+
         }
     }
 }
